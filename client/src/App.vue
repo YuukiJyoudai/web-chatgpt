@@ -9,7 +9,22 @@ const list = ref([
     value: 1
   }, {
     name: 2,
-    value: 2
+    value: '子组件传入的值子组件传入的值子组件传入的值子组件传入的值子组件传入的值子组件传入的值子组件传入的值子组件传入的值子组件传入的值子组件传入的值'
+  }, {
+    name: 1,
+    value: 'hhhh'
+  }, {
+    name: 2,
+    value: '子组件传入的值子组件传入的值子组件传入的值子组件传入的值子组件传入的值子组件传入的值子组件传入的值子组件传入的值子组件传入的值子组件传入的值'
+  }, {
+    name: 1,
+    value: '子组件传入的值子组件传入的值子组件传入的值子组件传入的值子组件传入的值子组件传入的值子组件传入的值子组件传入的值子组件传入的值子组件传入的值'
+  }, {
+    name: 2,
+    value: '发我哦浪费就完了附件为'
+  }, {
+    name: 3,
+    value: 'god'
   }
 ])
 
@@ -23,8 +38,8 @@ const onSubmit = (value: any) => {
 </script>
 
 <template>
-  <div class="container min-h-screen min-w-full bg-slate-500 flex flex-col px-4 py-4">
-    <List :list="list" class="flex-1"></List>
-    <Input @onSubmit="onSubmit" class="basis-5"></Input>
+  <div class="box-border w-full h-screen flex flex-col px-4 py-4 bg-gradient-to-bl from-purple-50 to-purple-100">
+    <List :list="list" class="flex-1 pb-2 overflow-y-scroll"></List>
+    <Input @onSubmit="onSubmit" class="mt-2 basis-5"></Input>
   </div>
 </template>

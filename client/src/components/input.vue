@@ -1,11 +1,16 @@
 <script setup lang="ts">
-import {ArrowRightIcon} from '@heroicons/vue/20/solid'
-</script>
+import {ref, defineEmits} from 'vue'
 
+const msg = ref('')
+const emits = defineEmits(['onSubmit'])
+const sendMsg = () => {
+    emits('onSubmit', msg.value)
+    msg.value = ''
+}
+</script>
 <template>
-    <input class="bg-[#3A3F47] text-white placeholder:text-[#949494] text-sm rounded-2xl p-4 w-full outline-none" />
-    <!-- <button class="bg-green-500 py-2 px-4 bg-emerald-500 text-white font-semibold rounded-lg shadow-md focus:ouline-none">Button</button> -->
-    <button class="absolute right-0 mr-4 mt-2 bg-white hover:opacity-50 active:opacity-100 transition-colors py-2 px-3 rounded-xl">
-        <ArrowRightIcon class="w-5 h-5 fill-[#3A3F47]" />
-    </button>
+    <form @submit.prevent="sendMsg" class="min-w-full flex flex-row">
+        <input v-model.trim="msg" class="flex-1 focus:outline-none mr-2 rounded-lg px-4 py-2 text-gray-600 shadow-emerald-300" />
+        <button class="py-2 px-4 bg-emerald-400 text-white rounded-lg shadow-sm hover:bg-blue-400">发送</button>
+    </form>
 </template>

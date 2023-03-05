@@ -24,7 +24,7 @@ const finalList = computed(() => {
   return defaultList.value.concat(list.value)
 })
 const getAnswer = (arr: any) => {
-  return fetch('http://localhost:3000/message', {
+  return fetch('http://47.105.181.51:3000/message', {
     method: 'POST',
     headers: {
       "Content-Type": "application/json"

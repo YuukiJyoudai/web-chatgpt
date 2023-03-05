@@ -12,7 +12,7 @@ defineProps({
 <template>
     <ul>
         <Message v-for="item in list"
-            :name="item.name"
-            :value="item.value"></Message>
+            :role="item.role"
+            :content="item.content"></Message>
     </ul>
 </template>

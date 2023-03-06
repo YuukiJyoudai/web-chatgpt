@@ -9,12 +9,14 @@ const router = new Router()
 
 app.use(cors())
 app.use(koaBody())
-router.post('/message', async (ctx, next) => {
+router.post('/message', async (ctx) => {
     const arr = ctx.request.body || []
     const data = await postMsg(arr).then(res => {
+        console.log('success---', res)
         let resData = JSON.parse(res)
         return resData.choices[0].message.content
     }).catch(e => {
+        console.log('e', e)
         return e
     })
 

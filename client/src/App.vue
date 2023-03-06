@@ -2,6 +2,7 @@
 import { ref, computed } from 'vue'
 import List from '@/components/list.vue'
 import Input from '@/components/input.vue'
+import {sendMsg} from './api'
 
 interface Msg {
   role: string,
@@ -23,25 +24,13 @@ const list = ref<MsgArr>([])
 const finalList = computed(() => {
   return defaultList.value.concat(list.value)
 })
-const getAnswer = (arr: any) => {
-  return fetch('http://47.105.181.51:3000/message', {
-    method: 'POST',
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(arr)
-  }).then(async stream => {
-    const data = await stream.json()
-    return data
-  })
-}
 const onSubmit = (content: any) => {
   list.value.push({
     role: "user",
     content
   })
   isLoading.value = true
-  getAnswer(list.value).then(res => {
+  sendMsg(list.value).then((res: any) => {
     list.value.push({
       role: "assistant",
       content: res.data

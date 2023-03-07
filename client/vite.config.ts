@@ -5,6 +5,9 @@ import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import { prismjsPlugin } from 'vite-plugin-prismjs'
 
 export default defineConfig({
+  server: {
+    host: '0.0.0.0'
+  },
   plugins: [
     vue(),
     createSvgIconsPlugin({

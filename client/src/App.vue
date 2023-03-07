@@ -42,8 +42,19 @@ const onSubmit = (content: any) => {
 </script>
 
 <template>
-  <div class="box-border w-full h-screen flex flex-col px-4 py-4 bg-gradient-to-bl from-purple-50 to-purple-100">
-    <List :list="finalList" class="flex-1 pb-2 overflow-y-scroll"></List>
+  <div class="self-wrap box-border w-full h-full flex flex-col px-4 py-4 bg-gradient-to-bl from-purple-50 to-purple-100">
+    <List :list="finalList" class="flex-1 pb-2"></List>
     <Input @onSubmit="onSubmit" :isLoading="isLoading" class="mt-2 basis-5"></Input>
   </div>
 </template>
+
+<style scoped>
+.self-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow-y: scroll;
+}
+</style>

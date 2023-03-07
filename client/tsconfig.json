@@ -15,7 +15,13 @@
             "DOM"
         ],
         "skipLibCheck": true,
-        "noEmit": true
+        "noEmit": true,
+        // 用于解决我们vue中添加 alias
+        "paths": {
+            "@/*": [
+                "src/*"
+            ]
+        }
     },
     "include": [
         "src/**/*.ts",

@@ -1,11 +1,21 @@
 import path from 'path'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
+import { prismjsPlugin } from 'vite-plugin-prismjs'
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    vue() 
+    vue(),
+    createSvgIconsPlugin({
+      // Specify the icon folder to be cached
+      iconDirs: [path.resolve(process.cwd(), 'src/assets/svg')],
+      // Specify symbolId format
+      symbolId: 'icon-[dir]-[name]'
+    }),
+    prismjsPlugin({
+      languages: ['json', 'javascript', 'python', 'css']
+    })
   ],
   resolve: {
     alias: {

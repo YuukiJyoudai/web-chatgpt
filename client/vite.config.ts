@@ -17,7 +17,7 @@ export default defineConfig({
       symbolId: 'icon-[dir]-[name]'
     }),
     prismjsPlugin({
-      languages: ['json', 'javascript', 'python', 'css']
+      languages: ['json', 'javascript', 'python', 'css', 'nginx']
     })
   ],
   resolve: {

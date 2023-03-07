@@ -28,7 +28,13 @@ function convertCodeBlockToHTML(text: any) {
 // 这里解析一下
 const resultMsg = computed(() => {
     console.log('打印一下原来的内容', props.content)
-    return convertCodeBlockToHTML(props.content)
+    let res = props.content
+    try {
+        res = convertCodeBlockToHTML(props.content)
+    } catch (error) {
+        alert('很抱歉，当前的prism.js高亮语法并未配置您输入的编程语言，没有办法使用 code block 的方式展示您需要的语言。请联系我 835041058@qq.com')
+    }
+    return res
 })
 const dom = ref(null)
 watchEffect(() => {

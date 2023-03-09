@@ -1,5 +1,6 @@
 import Koa from 'koa'
 import { koaBody } from 'koa-body'
+import ip from 'koa-ip'
 import Router from '@koa/router'
 import cors from 'koa2-cors'
 import {postMsg} from './fetch.js'
@@ -7,9 +8,22 @@ import {postMsg} from './fetch.js'
 const app = new Koa()
 const router = new Router()
 
+app.use(ip({}))
 app.use(cors())
 app.use(koaBody())
+
+app.use(async (ctx, next) => {
+    try {
+        console.log('获取用户的ip', ctx.ip)
+    } catch (error) {
+    } finally {
+        await next()
+    }
+})
+
+// 这里应该可以获取用户的ip + 信息
 router.post('/message', async (ctx) => {
+
     const arr = ctx.request.body || []
     const data = await postMsg(arr).then(res => {
         let resData = JSON.parse(res)

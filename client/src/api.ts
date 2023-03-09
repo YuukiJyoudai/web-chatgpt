@@ -1,7 +1,6 @@
 const protocol = 'http'
-const ip = '47.105.181.51'
-// const ip = 'localhost'
 const port = 3000
+const ip = import.meta.env.VITE_GPT_IP
 const url = `${protocol}://${ip}:${port}/message`
 
 const sendMsg = (arr: any) => {

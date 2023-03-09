@@ -1,7 +1,7 @@
 const protocol = 'http'
 const port = 3000
 const ip = import.meta.env.VITE_GPT_IP
-console.log('ip', ip)
+
 const url = `${protocol}://${ip}:${port}/message`
 
 const sendMsg = (arr: any) => {

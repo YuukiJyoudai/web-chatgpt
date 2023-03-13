@@ -5,7 +5,7 @@ import Router from '@koa/router'
 import cors from 'koa2-cors'
 import {postMsg} from './fetch.js'
 import geoip from 'geoip-lite'
-import {add} from './sql.js'
+import {add} from './sql_mongo.js'
 import moment from 'moment'
 const app = new Koa()
 const router = new Router()
@@ -17,15 +17,15 @@ app.use(koaBody())
 
 app.use(async (ctx, next) => {
     try {
-        const curIp = '::ffff:125.89.56.7'
+        const curIp = ctx.ip
         const ipObj = geoip.lookup(curIp)
         const {city, country} = ipObj 
-        const time = moment(new Date())
+        const momentObj = moment()
+        const time = momentObj.format('YYYY-MM-DD HH:mm:ss')
         const arr = ctx.request.body || []
         const len = arr.length - 1
         const msg = arr[len].content
 
-        console.log('匹配结果', msg)
         add({
             id,
             ip: curIp,

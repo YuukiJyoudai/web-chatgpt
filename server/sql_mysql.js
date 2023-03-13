@@ -1,7 +1,7 @@
-import mysql from 'mysql'
+import mariradb from 'mariadb'
 import {config} from './dbconfig.js'
 
-const pool = mysql.createPool(config)
+const pool = mariradb.createPool(config)
 
 /**
  * id, ip, pos, msg, time
